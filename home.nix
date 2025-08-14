@@ -6,7 +6,7 @@
     ];
 
     # This needs to actually be set to your username
-    username = "ipan";
+    username = "nipa";
     homeDirectory = "/home/nipa";
 
     # You do not need to change this if you're reading this in the future.
