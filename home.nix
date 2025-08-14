@@ -3,6 +3,7 @@
   home = {
     packages = with pkgs; [
       hello
+      bat
     ];
 
     # This needs to actually be set to your username
