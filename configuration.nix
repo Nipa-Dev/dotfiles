@@ -9,7 +9,7 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
     ];
-
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -104,7 +104,6 @@
     #  thunderbird
     ];
   };
-
   # Install firefox.
   programs.firefox.enable = true;
 
@@ -135,6 +134,7 @@
     wev
     # login
     greetd.tuigreet
+    home-manager
   ];
 
   environment.variables = {
