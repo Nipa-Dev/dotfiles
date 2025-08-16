@@ -2,8 +2,8 @@
 {
   home = {
     packages = with pkgs; [
-      hello
       bat
+      wofi
     ];
 
     # This needs to actually be set to your username
