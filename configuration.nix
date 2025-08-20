@@ -115,6 +115,7 @@
     wev
     # login
     greetd.tuigreet
+    swaylock
     # home manager
     home-manager
   ];
