@@ -4,8 +4,6 @@
     packages = with pkgs; [
       bat
       wofi
-      zoom
-      teams
     ];
 
     # This needs to actually be set to your username
@@ -17,3 +15,4 @@
     stateVersion = "25.05";
   };
 }
+

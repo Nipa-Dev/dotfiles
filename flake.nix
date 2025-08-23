@@ -13,20 +13,25 @@
   outputs = { nixpkgs, home-manager, ... }:
   let
     system = "x86_64-linux";
-    pkgs = import nixpkgs { inherit system; };
-  in {
-    # Home Manager configurations
+
+    pkgs = import nixpkgs {
+      inherit system;
+      config = { allowUnfree = true; };
+    };
+  in
+  {
     homeConfigurations = {
       nipa = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
+
         modules = [ ./home.nix ];
       };
     };
 
-    # NixOS system configuration
     nixosConfigurations = {
       nixos = nixpkgs.lib.nixosSystem {
         inherit system;
+
         modules = [
           ./configuration.nix
           home-manager.nixosModules.home-manager
