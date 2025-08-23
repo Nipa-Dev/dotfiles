@@ -4,6 +4,7 @@
     packages = with pkgs; [
       bat
       wofi
+      spotify
     ];
 
     # This needs to actually be set to your username
