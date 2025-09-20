@@ -57,8 +57,18 @@
     nerd-fonts.fira-code
   ];
 
-# Configure console keymap
+  # Configure console keymap
   console.keyMap = "fi";
+  # File manager configurations
+  programs.thunar.enable = true;
+  programs.xfconf.enable = true;
+  services.gvfs.enable = true; # Mount, trash, and other functionalities
+  services.tumbler.enable = true; # Thumbnail support for images
+  # File manager plugins
+  programs.thunar.plugins = with pkgs.xfce; [
+    thunar-archive-plugin
+    thunar-volman
+  ];
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
