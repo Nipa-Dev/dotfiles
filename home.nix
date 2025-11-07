@@ -6,7 +6,7 @@
       wofi
       swww
       wl-clipboard
-      jdk25
+      jdk24
     ];
 
     # This needs to actually be set to your username
