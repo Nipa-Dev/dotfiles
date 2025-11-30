@@ -7,6 +7,7 @@
       swww
       wl-clipboard
       jdk24
+      borgbackup
     ];
 
     # This needs to actually be set to your username
