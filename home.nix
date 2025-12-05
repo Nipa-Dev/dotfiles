@@ -8,6 +8,7 @@
       wl-clipboard
       jdk24
       borgbackup
+      localsend
     ];
 
     # This needs to actually be set to your username
