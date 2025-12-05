@@ -1,4 +1,4 @@
-{ lib, pkgs, ... }:
+{ lib, pkgs, zen-browser, ... }:
 {
   home = {
     packages = with pkgs; [
@@ -23,6 +23,8 @@
     # Don't ever change this after the first build.  Don't ask questions.
     stateVersion = "25.05";
   };
+
+  programs.zen-browser.enable = true;
 
   programs.vscode = {
     enable = true;
