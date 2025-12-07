@@ -5,7 +5,7 @@
         ffmpeg
         localsend
         mpv
-        onedriver
+        onedrive
         openjdk21
         obsidian
         python3
