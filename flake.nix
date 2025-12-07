@@ -34,9 +34,9 @@
         inherit pkgs;
 	extraSpecialArgs = {
 	    inherit zen-browser;
-	};
-        modules = [
-	    ./home.nix
+	};    
+    modules = [
+	    ./home/home.nix
 	    zen-browser.homeModules.twilight
 	];
       };
@@ -47,7 +47,7 @@
         inherit system;
 
         modules = [
-          ./configuration.nix
+          ./hosts/ideapads340/configuration.nix
           home-manager.nixosModules.home-manager
         ];
       };

@@ -1,14 +1,17 @@
 { lib, pkgs, zen-browser, ... }:
 {
+  imports = [
+    ./modules/common.nix
+  ];
   home = {
     packages = with pkgs; [
-      bat
       wofi
       swww
       wl-clipboard
       jdk24
       borgbackup
       localsend
+      eza
     ];
 
     # This needs to actually be set to your username
