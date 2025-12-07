@@ -4,6 +4,7 @@
     ./fastfetch.nix
     ./fish.nix
     ./starship.nix
+    ./packages.nix
   ];
 
   nixpkgs.config.allowUnfree = true;

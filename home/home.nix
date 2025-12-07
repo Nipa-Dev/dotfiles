@@ -4,15 +4,6 @@
     ./modules/common.nix
   ];
   home = {
-    packages = with pkgs; [
-      wofi
-      swww
-      wl-clipboard
-      jdk24
-      borgbackup
-      localsend
-      eza
-    ];
 
     # This needs to actually be set to your username
     username = "nipa";
