@@ -2,6 +2,7 @@
     home.packages = with pkgs; [
         borgbackup
         eza
+	ugrep
         ffmpeg
         localsend
         mpv
