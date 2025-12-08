@@ -10,6 +10,7 @@
         openjdk21
         obsidian
         python3
+	uv
         rclone
         swww
         wl-clipboard
