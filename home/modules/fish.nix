@@ -9,6 +9,7 @@
       tree = "eza --tree --group-directories-first";
       cat = "bat";
       grep = "ugrep";
+      cls = "clear";
       "..." = "../../";
     };
     interactiveShellInit = ''

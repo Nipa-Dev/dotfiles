@@ -35,14 +35,14 @@
   };
 
   # enable Niri
-  programs.niri.enable = true;
+  programs.niri = {
+    enable = true;
+  };
 
   services.greetd = {
     enable = true;
-    settings = {
-      default_session = {
-        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember --asterisks --cmd niri-session";
-      };
+    settings.default_session = {
+      command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember --asterisks --cmd niri-session";
     };
   };
   # enable bluetooth

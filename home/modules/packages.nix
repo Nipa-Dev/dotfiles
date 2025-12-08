@@ -4,8 +4,11 @@
         eza
 	ugrep
         ffmpeg
-        localsend
-        mpv
+        fzf
+	foliate
+	localsend
+        libreoffice-qt6-fresh
+	mpv
         onedrive
         openjdk21
         obsidian

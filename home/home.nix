@@ -2,6 +2,7 @@
 {
   imports = [
     ./modules/common.nix
+    ./modules/niri.nix
   ];
   home = {
 
@@ -10,7 +11,7 @@
     homeDirectory = "/home/nipa";
 
     sessionVariables = {
-	NIXOS_OZONE_WL = "1";
+	    NIXOS_OZONE_WL = "1";
     };
 
     # You do not need to change this if you're reading this in the future.

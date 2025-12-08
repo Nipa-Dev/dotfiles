@@ -3,14 +3,16 @@
 
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-25.05";
-    
+
     zen-browser = {
-	url = "github:0xc000022070/zen-browser-flake";
-	
-	# IMPORTANT: we're using "libgbm" and is only available in unstable so ensure
-	# to have it up-to-date or simply don't specify the nixpkgs input
-	inputs.nixpkgs.follows = "nixpkgs";
-	inputs.home-manager.follows = "home-manager";
+      url = "github:0xc000022070/zen-browser-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
+
+    niri = {
+      url = "github:sodiboo/niri-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     home-manager = {
@@ -19,39 +21,40 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, zen-browser, ... }:
-  let
-    system = "x86_64-linux";
+  outputs = { self, nixpkgs, home-manager, zen-browser, niri, ... }:
+    let
+      system = "x86_64-linux";
 
-    pkgs = import nixpkgs {
-      inherit system;
-      config = { allowUnfree = true; };
-    };
-  in
-  {
-    homeConfigurations = {
-      nipa = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-	extraSpecialArgs = {
-	    inherit zen-browser;
-	};    
-    modules = [
-	    ./home/home.nix
-	    zen-browser.homeModules.twilight
-	];
-      };
-    };
-
-    nixosConfigurations = {
-      nixos = nixpkgs.lib.nixosSystem {
+      pkgs = import nixpkgs {
         inherit system;
+        config.allowUnfree = true;
+      };
+    in {
+      homeConfigurations = {
+        nipa = home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
 
-        modules = [
-          ./hosts/ideapads340/configuration.nix
-          home-manager.nixosModules.home-manager
-        ];
+          extraSpecialArgs = {
+            inherit zen-browser;
+          };
+
+          modules = [
+            ./home/home.nix
+            zen-browser.homeModules.twilight
+          ];
+        };
+      };
+
+      nixosConfigurations = {
+        nixos = nixpkgs.lib.nixosSystem {
+          inherit system;
+
+          modules = [
+            ./hosts/ideapads340/configuration.nix
+            niri.nixosModules.niri
+            home-manager.nixosModules.home-manager
+          ];
+        };
       };
     };
-  };
 }
-
