@@ -2,7 +2,12 @@
   description = "My Home Manager and NixOS configuration";
 
   inputs = {
-    nixpkgs.url = "nixpkgs/nixos-25.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
+
+    home-manager = {
+      url = "github:nix-community/home-manager/release-25.11";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake";
@@ -12,49 +17,70 @@
 
     niri = {
       url = "github:sodiboo/niri-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    home-manager = {
-      url = "github:nix-community/home-manager/release-25.05";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
   outputs = { self, nixpkgs, home-manager, zen-browser, niri, ... }:
-    let
-      system = "x86_64-linux";
+  let
+    system = "x86_64-linux";
 
-      pkgs = import nixpkgs {
-        inherit system;
-        config.allowUnfree = true;
+    pkgs = import nixpkgs {
+      inherit system;
+      config = { allowUnfree = true; };
+    };
+
+    # User definitions
+    users = {
+      nipa = {
+        name = "nipa";
+        fullName = "Nipa";
       };
-    in {
-      homeConfigurations = {
-        nipa = home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
+    };
 
-          extraSpecialArgs = {
-            inherit zen-browser;
-          };
+    # Path to NixOS modules
+    nixosModules = ./modules/nixos;
+  in
+  {
+    # Home Manager configuration
+    homeConfigurations = {
+      nipa = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
 
-          modules = [
-            ./home/home.nix
-            zen-browser.homeModules.twilight
-          ];
+        extraSpecialArgs = {
+          niri = niri.packages.${system}.niri-unstable;
+          zen-browser = zen-browser;
+          userConfig = users.nipa;
+
+          nhModules = ./modules/home;
         };
+
+        modules = [
+          ./home/nipa/ideapads340/default.nix
+          niri.homeModules.niri
+          zen-browser.homeModules.twilight
+        ];
       };
+    };
 
-      nixosConfigurations = {
-        nixos = nixpkgs.lib.nixosSystem {
-          inherit system;
 
-          modules = [
-            ./hosts/ideapads340/configuration.nix
-            niri.nixosModules.niri
-            home-manager.nixosModules.home-manager
-          ];
+    # NixOS configuration
+    nixosConfigurations = {
+      ideapads340 = nixpkgs.lib.nixosSystem {
+        inherit system pkgs;
+
+        modules = [
+          ./hosts/ideapads340/default.nix
+          niri.nixosModules.niri
+          home-manager.nixosModules.home-manager
+        ];
+
+        specialArgs = {
+          hostname = "ideapads340";
+          nixosModules = nixosModules;
+          userConfig = users.nipa;
+          niriPackage = niri.packages.${system}.niri-unstable;
         };
       };
     };
+  };
 }

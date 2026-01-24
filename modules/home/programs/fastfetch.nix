@@ -1,5 +1,6 @@
-{pkgs, ...}: {
-  home.packages = with pkgs; [hyfetch];
+{ pkgs, ... }:
+{
+  home.packages = with pkgs; [ hyfetch ];
   programs.fastfetch = {
     enable = true;
     settings = {

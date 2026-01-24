@@ -1,8 +1,8 @@
 {
-  userConfig,
   pkgs,
   ...
-}: {
+}:
+{
   gtk = {
     enable = true;
     iconTheme = {
@@ -18,10 +18,10 @@
       extraConfig.gtk-application-prefer-dark-theme = true;
 
       bookmarks = [
-        "file:///home/${userConfig.name}/Documents"
-        "file:///home/${userConfig.name}/Downloads"
-        "file:///home/${userConfig.name}/Pictures"
-        "file:///home/${userConfig.name}/Videos"
+        "file:///home/nipa/Documents"
+        "file:///home/nipa/Downloads"
+        "file:///home/nipa/Pictures"
+        "file:///home/nipa/Videos"
       ];
     };
   };
