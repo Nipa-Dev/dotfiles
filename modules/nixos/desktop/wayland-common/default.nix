@@ -1,7 +1,6 @@
 { pkgs, ... }:
 
 {
-  # PipeWire / sound stack (already in your config)
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
@@ -11,7 +10,6 @@
     pulse.enable = true;
   };
 
-  # XDG portals (already in your config)
   xdg.portal = {
     enable = true;
     extraPortals = [
@@ -21,7 +19,6 @@
     config.common.default = "gtk";
   };
 
-  # Shared Wayland programs (already in your config)
   environment.systemPackages = with pkgs; [
     fuzzel
     waybar
