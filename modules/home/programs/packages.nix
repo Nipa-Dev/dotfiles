@@ -16,6 +16,7 @@
     obsidian
     python3
     pandoc
+    spotify
     texliveSmall
     uv
     rclone
@@ -27,7 +28,7 @@
 
     geany
     
-
+    
     mysql80
     mysql-workbench
     dbeaver-bin
