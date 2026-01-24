@@ -6,6 +6,7 @@
     ../programs/zen-browser.nix
     ../programs/fish.nix
     ../programs/starship.nix
+    ../programs/spotify.nix
     ../programs/packages.nix
     ../programs/xdg.nix
     ../programs/obs.nix

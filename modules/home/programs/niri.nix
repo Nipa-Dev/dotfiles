@@ -109,6 +109,7 @@
   
         "Mod+T".action.spawn = [ "alacritty" ];
         "Mod+D".action.spawn = [ "fuzzel" ];
+        "Mod+S".action.spawn = ["spotify" "--enable-features=UseOzonePlatform" "--ozone-platform=wayland"];
         "Super+Alt+L".action.spawn = [ "swaylock" ];
   
         "XF86AudioRaiseVolume" = {
