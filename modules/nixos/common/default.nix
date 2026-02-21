@@ -12,6 +12,9 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  # zram config
+  zramSwap.enable = true;
+
   # Networking
   networking.networkmanager.enable = true;
 
@@ -82,7 +85,7 @@
   };
 
   services.mysql = {
-    enable = true;
+    enable = false;  # don't enable by default
     package = pkgs.mysql80;
   };
 
@@ -90,6 +93,14 @@
     enable = true;
     enableSSHSupport = true;
   };
+
+  # Enable container management
+  virtualisation.containers.enable = true;
+
+  virtualisation.podman.enable = true;
+  # Required for podman-compose networking
+  virtualisation.podman.defaultNetwork.settings.dns_enabled = true;
+  virtualisation.podman.dockerCompat = true;
 
   # Core packages
   environment.systemPackages = with pkgs; [
@@ -100,6 +111,8 @@
     clang
     brightnessctl
     wev
+    podman-tui
+    podman-compose
     home-manager
   ];
 
