@@ -85,9 +85,11 @@
   };
 
   services.mysql = {
-    enable = false;  # don't enable by default
+    enable = true;
     package = pkgs.mysql80;
   };
+  # to disable automatic startup
+  systemd.services.mysql.wantedBy = pkgs.lib.mkForce [ ];
 
   programs.gnupg.agent = {
     enable = true;
@@ -102,6 +104,8 @@
   virtualisation.podman.defaultNetwork.settings.dns_enabled = true;
   virtualisation.podman.dockerCompat = true;
 
+  services.upower.enable = true;
+
   # Core packages
   environment.systemPackages = with pkgs; [
     neovim
@@ -114,6 +118,7 @@
     podman-tui
     podman-compose
     home-manager
+    upower
   ];
 
   # Environment variables

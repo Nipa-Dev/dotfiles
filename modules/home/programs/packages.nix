@@ -32,5 +32,9 @@
     mysql80
     mysql-workbench
     dbeaver-bin
+
+    # for javaFX dev
+    xwayland
+    openbox
   ];
 }

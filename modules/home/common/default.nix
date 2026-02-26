@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 {
   imports = [
     ../programs/niri.nix
@@ -13,6 +13,7 @@
     ../programs/gtk.nix
     ../programs/waybar.nix
     ../programs/fastfetch.nix
+    ../programs/dms.nix
   ];
 
   nixpkgs.config.allowUnfree = true;

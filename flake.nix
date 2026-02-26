@@ -18,9 +18,19 @@
     niri = {
       url = "github:sodiboo/niri-flake";
     };
+
+    dms = {
+      url = "github:AvengeMedia/DankMaterialShell/stable";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    dgop = {
+      url = "github:AvengeMedia/dgop";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, zen-browser, niri, ... }:
+  outputs = { self, nixpkgs, home-manager, zen-browser, niri, dms, dgop, ... }:
   let
     system = "x86_64-linux";
 
@@ -49,15 +59,18 @@
         extraSpecialArgs = {
           niri = niri.packages.${system}.niri-unstable;
           zen-browser = zen-browser;
+          dgop  = dgop;
           userConfig = users.nipa;
 
           nhModules = ./modules/home;
         };
 
         modules = [
-          ./home/nipa/ideapads340/default.nix
+          ./home/nipa/ideapad/default.nix
           niri.homeModules.niri
           zen-browser.homeModules.twilight
+
+          dms.homeModules.dank-material-shell
         ];
       };
     };
@@ -65,17 +78,17 @@
 
     # NixOS configuration
     nixosConfigurations = {
-      ideapads340 = nixpkgs.lib.nixosSystem {
+      ideapad = nixpkgs.lib.nixosSystem {
         inherit system pkgs;
 
         modules = [
-          ./hosts/ideapads340/default.nix
+          ./hosts/ideapad/default.nix
           niri.nixosModules.niri
           home-manager.nixosModules.home-manager
         ];
 
         specialArgs = {
-          hostname = "ideapads340";
+          hostname = "ideapad";
           nixosModules = nixosModules;
           userConfig = users.nipa;
           niriPackage = niri.packages.${system}.niri-unstable;
