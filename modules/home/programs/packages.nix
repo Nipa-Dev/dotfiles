@@ -26,12 +26,17 @@
     wl-clipboard
     wofi
     nodejs
+    pnpm
     unzip
     zed-editor
     grim
     mysql80
     mysql-workbench
     dbeaver-bin
+    zellij
+
+    # lsp
+    lua-language-server
 
     # for javaFX dev
     xwayland
