@@ -65,6 +65,8 @@
   # Base programs / services
   services.printing.enable = true;
 
+  programs.nix-ld.enable = true;
+
   programs.thunar.enable = true;
   programs.xfconf.enable = true;
   services.gvfs.enable = true; # Mount, trash, and other functionalities
@@ -108,6 +110,7 @@
 
   # Core packages
   environment.systemPackages = with pkgs; [
+    android-studio
     neovim
     wget
     git

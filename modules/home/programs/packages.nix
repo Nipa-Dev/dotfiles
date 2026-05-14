@@ -1,4 +1,11 @@
 { pkgs, ... }:
+
+let
+    jdkWithFX = pkgs.openjdk21.override {
+	enableJavaFX = true;
+    };
+
+in
 {
   home.packages = with pkgs; [
     borgbackup
@@ -13,7 +20,8 @@
     libreoffice-qt6-fresh
     mpv
     onedrive
-    (openjdk21.override { enableJavaFX = true; })
+    jdkWithFX
+    maven
     obsidian
     python3
     pandoc
