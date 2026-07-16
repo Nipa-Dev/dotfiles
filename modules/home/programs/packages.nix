@@ -27,6 +27,7 @@ in
     pandoc
     spotify
     texliveSmall
+    tesseract
     uv
     ruff
     rclone
