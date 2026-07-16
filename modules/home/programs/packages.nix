@@ -39,7 +39,7 @@ in
     unzip
     zed-editor
     grim
-    mysql80
+    mysql84
     mysql-workbench
     dbeaver-bin
     zellij

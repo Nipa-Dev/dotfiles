@@ -25,7 +25,7 @@
     mako
     alacritty
     swaylock
-    greetd.tuigreet
+    tuigreet
     adwaita-icon-theme
   ];
 }

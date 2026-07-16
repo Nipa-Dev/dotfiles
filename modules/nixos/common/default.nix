@@ -72,7 +72,7 @@
   services.gvfs.enable = true; # Mount, trash, and other functionalities
   services.tumbler.enable = true; # Thumbnail support for images
   # File manager plugins
-  programs.thunar.plugins = with pkgs.xfce; [
+  programs.thunar.plugins = with pkgs; [
     thunar-archive-plugin
     thunar-volman
   ];
@@ -82,13 +82,13 @@
   services.greetd = {
     enable = true;
     settings.default_session = {
-      command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember --asterisks --cmd niri-session";
+      command = "${pkgs.tuigreet}/bin/tuigreet --time --remember --asterisks --cmd niri-session";
     };
   };
 
   services.mysql = {
     enable = true;
-    package = pkgs.mysql80;
+    package = pkgs.mysql84;
   };
   # to disable automatic startup
   systemd.services.mysql.wantedBy = pkgs.lib.mkForce [ ];
