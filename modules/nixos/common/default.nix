@@ -138,17 +138,17 @@
   # Core packages
   environment.systemPackages = with pkgs; [
     android-studio
-    neovim
-    wget
-    git
-    gcc
-    clang
     brightnessctl
-    wev
-    podman-tui
-    podman-compose
+    clang
+    gcc
+    git
     home-manager
+    neovim
+    podman-compose
+    podman-tui
     upower
+    wev
+    wget
   ];
 
   # Environment variables

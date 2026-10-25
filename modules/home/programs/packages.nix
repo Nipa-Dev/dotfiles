@@ -15,49 +15,44 @@ in
       ];
     })
     borgbackup
+    dbeaver-bin
     eza
-    ugrep
     ffmpeg
-    fzf
     foliate
+    fzf
+    grim
+    jdkWithFX
     jetbrains.idea
+    libreoffice-qt6-fresh
     localsend
     loupe
-    libreoffice-qt6-fresh
-    mpv
-    onedrive
-    jdkWithFX
+    lua-language-server
     maven
+    mpv
+    mysql-workbench
+    mysql84
+    nodejs
     obsidian
-    python3
+    onedrive
+    onlyoffice-desktopeditors
+    openbox
     pandoc
+    pnpm
+    python3
+    rclone
+    ruff
     spotify
     sqlite
-    texliveSmall
-    tesseract
-    # Temporarily remove uv
-    # uv
-    ruff
-    rclone
     swww
+    tesseract
+    texliveSmall
+    ugrep
+    unzip
     wl-clipboard
     wofi
-    nodejs
-    pnpm
-    unzip
+    xwayland
     zed-editor
-    grim
-    mysql84
-    mysql-workbench
-    dbeaver-bin
     zellij
     zip
-    onlyoffice-desktopeditors
-    # lsp
-    lua-language-server
-
-    # for javaFX dev
-    xwayland
-    openbox
   ];
 }

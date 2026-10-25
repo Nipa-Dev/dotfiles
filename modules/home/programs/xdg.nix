@@ -25,9 +25,7 @@
         "inode/directory" = [ "thunar.desktop" ];
 
         "audio/*" = [ "mpv.desktop" ];
-
         "image/*" = [ "org.gnome.Loupe.desktop" ];
-
         "video/*" = [ "mpv.desktop" ];
 
         "application/json" = [ "org.gnome.TextEditor.desktop" ];
