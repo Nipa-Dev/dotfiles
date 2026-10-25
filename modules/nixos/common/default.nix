@@ -1,11 +1,27 @@
-{ pkgs, userConfig, ... }:
+{
+  pkgs,
+  userConfig,
+  inputs,
+  ...
+}:
 
 {
   # Nix settings
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  nix.settings.substituters = [ "https://niri.cachix.org" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
+  nix.settings.substituters = [
+    "https://niri.cachix.org"
+  ];
+
   nix.settings.trusted-public-keys = [
     "niri.cachix.org-1:Wv0OmO7PsuocRKzfDoJ3mulSl7Z6oezYhGhR+3W2964="
+  ];
+
+  security.pki.caCertificateBlacklist = [
+    "Comodo AAA Services root"
+    "emSign ECC Root CA - G3"
   ];
 
   # Bootloader
@@ -16,7 +32,9 @@
   zramSwap.enable = true;
 
   # Networking
-  networking.networkmanager.enable = true;
+  networking.networkmanager = {
+    enable = true;
+  };
   networking.networkmanager.wifi.powersave = false;
   networking.firewall.enable = true;
   networking.firewall.allowedTCPPorts = [ 53317 ];
@@ -63,7 +81,16 @@
   };
 
   # Base programs / services
-  services.printing.enable = true;
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true;
+    openFirewall = true;
+  };
+
+  services.printing = {
+    enable = true;
+    drivers = [ pkgs.gutenprint ];
+  };
 
   programs.nix-ld.enable = true;
 

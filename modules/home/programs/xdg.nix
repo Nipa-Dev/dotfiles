@@ -32,6 +32,7 @@
 
         "application/json" = [ "org.gnome.TextEditor.desktop" ];
         "application/toml" = [ "org.gnome.TextEditor.desktop" ];
+        "application/pdf" = [ "firefox.desktop" ];
       };
     };
 

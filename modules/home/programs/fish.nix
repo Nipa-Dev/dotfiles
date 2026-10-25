@@ -7,7 +7,7 @@
       dir = "eza --group-directories-first";
       ll = "eza -l --group-directories-first";
       la = "eza -lA --group-directories-first";
-      tree = "eza --tree --group-directories-first";
+      tree = "eza --tree --group-directories-first --git-ignore";
       cat = "bat";
       grep = "ugrep";
       cls = "clear";

@@ -1,9 +1,10 @@
-{ pkgs, inputs, dgop, ... }:{
+{ pkgs, ... }: {
   programs.dank-material-shell = {
     enable = true;
-    enableSystemMonitoring = true; # enables dgop
-
-    dgop.package = dgop.packages.${pkgs.system}.default;
-    systemd.enable = true;
+    enableSystemMonitoring = true;
+    systemd = {
+      enable = true;
+      restartIfChanged = true;
+    };
   };
 }

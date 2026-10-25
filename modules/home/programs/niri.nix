@@ -102,14 +102,15 @@
         }
       ];
 
-
-        # Placeholder for keybinds
-        binds = {
+      # Placeholder for keybinds
+      binds = {
         "Mod+Shift+W".action.show-hotkey-overlay = { };
-
         "Mod+T".action.spawn = [ "alacritty" ];
         "Mod+D".action.spawn = [ "fuzzel" ];
-        "Mod+S".action.spawn = ["spotify" "--enable-features=UseOzonePlatform" "--ozone-platform=wayland"];
+        "Mod+S".action.spawn = [
+          "vellum"
+          "toggle"
+        ];
         "Super+Alt+L".action.spawn = [ "swaylock" ];
 
         "XF86AudioRaiseVolume" = {
@@ -304,9 +305,9 @@
         "Ctrl+Alt+Delete".action.quit = { };
 
         "Mod+Shift+P".action.power-off-monitors = { };
-        };
       };
     };
+  };
 
   # Pointer cursor settings
   home.pointerCursor = {

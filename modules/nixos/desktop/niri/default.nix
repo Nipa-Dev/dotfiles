@@ -1,4 +1,9 @@
-{ nixosModules, pkgs, niriPackage, ... }:
+{
+  nixosModules,
+  pkgs,
+  niriPackage,
+  ...
+}:
 
 {
   imports = [

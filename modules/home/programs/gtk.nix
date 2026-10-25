@@ -22,6 +22,7 @@
         "file:///home/nipa/Downloads"
         "file:///home/nipa/Pictures"
         "file:///home/nipa/Videos"
+        "file:///home/nipa/projects"
       ];
     };
   };

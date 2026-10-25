@@ -1,13 +1,19 @@
 { pkgs, ... }:
 
 let
-    jdkWithFX = pkgs.openjdk21.override {
-	enableJavaFX = true;
-    };
-
+  jdkWithFX = pkgs.openjdk21.override {
+    enableJavaFX = true;
+  };
 in
 {
   home.packages = with pkgs; [
+    (pkgs.rstudioWrapper.override {
+      packages = with pkgs.rPackages; [
+        ggplot2
+        dplyr
+        xts
+      ];
+    })
     borgbackup
     eza
     ugrep
@@ -26,9 +32,11 @@ in
     python3
     pandoc
     spotify
+    sqlite
     texliveSmall
     tesseract
-    uv
+    # Temporarily remove uv
+    # uv
     ruff
     rclone
     swww
@@ -43,7 +51,8 @@ in
     mysql-workbench
     dbeaver-bin
     zellij
-
+    zip
+    onlyoffice-desktopeditors
     # lsp
     lua-language-server
 
