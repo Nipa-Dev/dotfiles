@@ -37,6 +37,7 @@
     userDirs = {
       enable = true;
       createDirectories = false;
+      setSessionVariables = false;
     };
   };
 }

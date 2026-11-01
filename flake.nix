@@ -29,6 +29,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    dux-calendar = {
+      url = "github:duxlabs-dev/dux-calendar";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
   };
 
   outputs =
@@ -40,6 +45,7 @@
       niri,
       dms,
       dgop,
+      dux-calendar,
       ...
     }@inputs:
     let
@@ -87,6 +93,7 @@
             zen-browser.homeModules.twilight
 
             dms.homeModules.dank-material-shell
+            dux-calendar.homeModules.default
           ];
         };
       };

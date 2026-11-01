@@ -7,13 +7,12 @@ let
 in
 {
   home.packages = with pkgs; [
-    (pkgs.rstudioWrapper.override {
-      packages = with pkgs.rPackages; [
-        ggplot2
-        dplyr
-        xts
-      ];
-    })
+    #  packages = with pkgs.rPackages; [
+    #    ggplot2
+    #    dplyr
+    #    xts
+    #  ];
+    #})
     borgbackup
     dbeaver-bin
     eza
@@ -21,7 +20,6 @@ in
     foliate
     fzf
     grim
-    jdkWithFX
     jetbrains.idea
     libreoffice-qt6-fresh
     localsend
@@ -31,11 +29,12 @@ in
     mpv
     mysql-workbench
     mysql84
-    nodejs
+    nodejs_26
     obsidian
     onedrive
     onlyoffice-desktopeditors
     openbox
+    openjdk25
     pandoc
     pnpm
     python3
@@ -43,7 +42,7 @@ in
     ruff
     spotify
     sqlite
-    swww
+    awww
     tesseract
     texliveSmall
     ugrep

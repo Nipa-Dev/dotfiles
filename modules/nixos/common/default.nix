@@ -1,4 +1,5 @@
 {
+  config,
   pkgs,
   userConfig,
   inputs,
@@ -6,6 +7,12 @@
 }:
 
 {
+  imports = [
+    ./networking.nix
+    ./services.nix
+    ./packages.nix
+  ];
+
   # Nix settings
   nix.settings.experimental-features = [
     "nix-command"
@@ -14,14 +21,12 @@
   nix.settings.substituters = [
     "https://niri.cachix.org"
   ];
-
   nix.settings.trusted-public-keys = [
     "niri.cachix.org-1:Wv0OmO7PsuocRKzfDoJ3mulSl7Z6oezYhGhR+3W2964="
   ];
 
   security.pki.caCertificateBlacklist = [
     "Comodo AAA Services root"
-    "emSign ECC Root CA - G3"
   ];
 
   # Bootloader
@@ -30,15 +35,6 @@
 
   # zram config
   zramSwap.enable = true;
-
-  # Networking
-  networking.networkmanager = {
-    enable = true;
-  };
-  networking.networkmanager.wifi.powersave = false;
-  networking.firewall.enable = true;
-  networking.firewall.allowedTCPPorts = [ 53317 ];
-  networking.firewall.allowedUDPPorts = [ 53317 ];
 
   # Timezone & locale
   time.timeZone = "Europe/Helsinki";
@@ -56,18 +52,9 @@
     LC_TIME = "fi_FI.UTF-8";
   };
 
-  # Input
+  # Input / Keyboard
   services.xserver.xkb.layout = "fi";
   console.keyMap = "fi";
-
-  # Fonts
-  fonts.packages = with pkgs; [
-    nerd-fonts.fira-code
-  ];
-
-  # Bluetooth
-  hardware.bluetooth.enable = true;
-  services.blueman.enable = true;
 
   # User account
   users.users.${userConfig.name} = {
@@ -80,80 +67,5 @@
     ];
   };
 
-  # Base programs / services
-  services.avahi = {
-    enable = true;
-    nssmdns4 = true;
-    openFirewall = true;
-  };
-
-  services.printing = {
-    enable = true;
-    drivers = [ pkgs.gutenprint ];
-  };
-
   programs.nix-ld.enable = true;
-
-  programs.thunar.enable = true;
-  programs.xfconf.enable = true;
-  services.gvfs.enable = true; # Mount, trash, and other functionalities
-  services.tumbler.enable = true; # Thumbnail support for images
-  # File manager plugins
-  programs.thunar.plugins = with pkgs; [
-    thunar-archive-plugin
-    thunar-volman
-  ];
-
-  programs.firefox.enable = true;
-
-  services.greetd = {
-    enable = true;
-    settings.default_session = {
-      command = "${pkgs.tuigreet}/bin/tuigreet --time --remember --asterisks --cmd niri-session";
-    };
-  };
-
-  services.mysql = {
-    enable = true;
-    package = pkgs.mysql84;
-  };
-  # to disable automatic startup
-  systemd.services.mysql.wantedBy = pkgs.lib.mkForce [ ];
-
-  programs.gnupg.agent = {
-    enable = true;
-    enableSSHSupport = true;
-  };
-
-  # Enable container management
-  virtualisation.containers.enable = true;
-
-  virtualisation.podman.enable = true;
-  # Required for podman-compose networking
-  virtualisation.podman.defaultNetwork.settings.dns_enabled = true;
-  virtualisation.podman.dockerCompat = true;
-
-  services.upower.enable = true;
-
-  # Core packages
-  environment.systemPackages = with pkgs; [
-    android-studio
-    brightnessctl
-    clang
-    gcc
-    git
-    home-manager
-    neovim
-    podman-compose
-    podman-tui
-    upower
-    wev
-    wget
-  ];
-
-  # Environment variables
-  environment.variables = {
-    XCURSOR_THEME = "Adwaita";
-    XCURSOR_SIZE = "24";
-  };
 }
