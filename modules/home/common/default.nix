@@ -19,7 +19,6 @@
     ../programs/waybar.nix
     ../programs/xdg.nix
     ../programs/zen-browser.nix
-    ../programs/dcal.nix
   ];
 
   nixpkgs.config.allowUnfree = true;

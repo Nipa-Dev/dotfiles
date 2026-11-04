@@ -29,11 +29,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    dux-calendar = {
-      url = "github:duxlabs-dev/dux-calendar";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
   };
 
   outputs =
@@ -43,9 +38,8 @@
       home-manager,
       zen-browser,
       niri,
-      dms,
       dgop,
-      dux-calendar,
+      dms,
       ...
     }@inputs:
     let
@@ -82,6 +76,7 @@
             niri = niri.packages.${system}.niri-unstable;
             zen-browser = zen-browser;
             dgop = dgop;
+            dms = dms;
             userConfig = users.nipa;
 
             nhModules = ./modules/home;
@@ -91,9 +86,6 @@
             ./home/nipa/ideapad/default.nix
             niri.homeModules.niri
             zen-browser.homeModules.twilight
-
-            dms.homeModules.dank-material-shell
-            dux-calendar.homeModules.default
           ];
         };
       };
