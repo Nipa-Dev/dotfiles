@@ -50,6 +50,8 @@
     enableSSHSupport = true;
   };
 
+  services.gnome.gnome-keyring.enable = true;
+
   # Containers
   virtualisation.containers.enable = true;
   virtualisation.podman.enable = true;

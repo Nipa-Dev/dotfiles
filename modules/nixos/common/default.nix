@@ -67,6 +67,5 @@
       "video"
     ];
   };
-  systemd.user.services.niri-flake-polkit.enable = false;
   programs.nix-ld.enable = true;
 }

@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 
 let
   jdkWithFX = pkgs.openjdk21.override {
@@ -7,12 +7,9 @@ let
 in
 {
   home.packages = with pkgs; [
-    #  packages = with pkgs.rPackages; [
-    #    ggplot2
-    #    dplyr
-    #    xts
-    #  ];
-    #})
+    inputs.dms.packages.${pkgs.system}.default
+    inputs.dgop.packages.${pkgs.system}.default
+
     borgbackup
     dbeaver-bin
     eza
@@ -44,6 +41,7 @@ in
     sqlite
     awww
     tesseract
+    speedcrunch
     texliveSmall
     ugrep
     unzip

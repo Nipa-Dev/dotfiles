@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-26.05";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
     home-manager = {
       url = "github:nix-community/home-manager/release-26.05";
@@ -35,6 +36,7 @@
     {
       self,
       nixpkgs,
+      nixpkgs-unstable,
       home-manager,
       zen-browser,
       niri,
@@ -46,6 +48,13 @@
       system = "x86_64-linux";
 
       pkgs = import nixpkgs {
+        inherit system;
+        config = {
+          allowUnfree = true;
+        };
+      };
+
+      pkgs-unstable = import nixpkgs-unstable {
         inherit system;
         config = {
           allowUnfree = true;
@@ -83,6 +92,13 @@
           };
 
           modules = [
+            {
+              nixpkgs.overlays = [
+                (final: prev: {
+                  quickshell = pkgs-unstable.quickshell;
+                })
+              ];
+            }
             ./home/nipa/ideapad/default.nix
             niri.homeModules.niri
             zen-browser.homeModules.twilight

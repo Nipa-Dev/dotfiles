@@ -10,12 +10,12 @@
     enable = true;
 
     systemd = {
-      enable = false;
+      enable = true;
     };
 
     niri = {
       enableKeybinds = false;
-      enableSpawn = true;
+      enableSpawn = false;
       includes = {
         enable = false;
       };
